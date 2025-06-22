@@ -14,7 +14,7 @@
             </Viewbox>
         </Grid>
 
-        <Grid Name="buttonsGrid" Margin="0,100,0,0" ShowGridLines="true" >
+        <Grid Name="buttonsGrid" Margin="0,100,0,0" ShowGridLines="false" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -30,8 +30,25 @@
             </Grid.RowDefinitions>
 
             <!-- BUTTONS -->
-                        
+
             <!-- Operators -->
+            <Button Name="Divide" Grid.Row="0" Grid.Column="0">Divide</Button>
+            <Button Name="Multiply" Grid.Row="0" Grid.Column="1">Multiply</Button>
+            <Button Name="Subtract" Grid.Row="0" Grid.Column="2">Subtract</Button>
+            <Button Name="Delete" Grid.Row="0" Grid.Column="3">Delete</Button>
+            <Button Name="Add" Grid.Row="1" Grid.Column="3">Add</Button>
+            <Button Name="Equals" Grid.RowSpan="2" Grid.Row="2" Grid.Column="3">Equals</Button>
+            
+            <!-- Numbers -->
+            <Button Name="Number1" Grid.Row="1" Grid.Column="0">1</Button>
+            <Button Name="Number2" Grid.Row="1" Grid.Column="1">2</Button>
+            <Button Name="Number3" Grid.Row="1" Grid.Column="2">3</Button>
+            <Button Name="Number4" Grid.Row="2" Grid.Column="0">4</Button>
+            <Button Name="Number5" Grid.Row="2" Grid.Column="1">5</Button>
+            <Button Name="Number6" Grid.Row="2" Grid.Column="2">6</Button>
+            <Button Name="Number7" Grid.Row="3" Grid.Column="0">7</Button>
+            <Button Name="Number8" Grid.Row="3" Grid.Column="1">8</Button>
+            <Button Name="Number9" Grid.Row="3" Grid.Column="2">9</Button>
         </Grid>
     </Grid>
 </Window>

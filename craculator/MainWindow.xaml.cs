@@ -19,6 +19,8 @@ namespace craculator
         public MainWindow()
         {
             InitializeComponent();
+
+            outputText.Text = "blehhhhh";
         }
     }
 }
