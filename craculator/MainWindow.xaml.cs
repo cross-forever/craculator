@@ -29,9 +29,18 @@ namespace craculator
             MultiplyButton.Click += (obj, args) => outputText.Text += "*";
             ClearButton.Click += (obj, args) => outputText.Text = string.Empty;
 
+            // currently mistaking decimal points for multiplication.
+            PointButton.Click += (obj, args) => outputText.Text += ".";
+
+            BackspaceButton.Click += (obj, args) =>
+            {
+               outputText.Text = outputText.Text.Remove(outputText.Text.Length - 1);
+            };
+
             // TODO: make a history window
             EqualsButton.Click += (obj, args) => outputText.Text = MathUtils.Evaluate(outputText.Text).ToString();
 
+            // Numbers
             Number0.Click += (obj, args) => outputText.Text += "0";
             Number1.Click += (obj, args) => outputText.Text += "1";
             Number2.Click += (obj, args) => outputText.Text += "2";
