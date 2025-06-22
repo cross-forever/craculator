@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:craculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="CRACULATOR" MinWidth="300" MinHeight="450"
+        MaxWidth="300" MaxHeight="450">
     <Grid>
+        <Grid Name="outputGrid" Margin="0,0,0,334" ShowGridLines="true">
+            <Viewbox HorizontalAlignment="Right">
+                <TextBlock x:Name="outputText" TextWrapping="WrapWithOverflow" FontSize="80"></TextBlock>
+            </Viewbox>
+        </Grid>
 
+        <Grid Name="buttonsGrid" Margin="0,100,0,0" ShowGridLines="true" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!-- BUTTONS -->
+                        
+            <!-- Operators -->
+        </Grid>
     </Grid>
 </Window>

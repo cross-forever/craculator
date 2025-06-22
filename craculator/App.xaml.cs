@@ -10,5 +10,4 @@ namespace craculator
     public partial class App : Application
     {
     }
-
 }
