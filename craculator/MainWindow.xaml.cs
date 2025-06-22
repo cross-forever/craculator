@@ -19,104 +19,29 @@ namespace craculator
         public MainWindow()
         {
             InitializeComponent();
-        }
 
-        // https://www.geeksforgeeks.org/parsing-string-of-symbols-to-expression/
-        public static int evaluate(string expression)
-        {
-            // Create a stack to hold operands
-            Stack<int> operands = new Stack<int>();
+            // CALLBACKS
 
-            // Create a stack to hold operators
-            Stack<char> operators = new Stack<char>();
+            // Operators
+            AddButton.Click += (obj, args) => outputText.Text += "+";
+            SubtractButton.Click += (obj, args) => outputText.Text += "-";
+            DivideButton.Click += (obj, args) => outputText.Text += "/";
+            MultiplyButton.Click += (obj, args) => outputText.Text += "*";
+            ClearButton.Click += (obj, args) => outputText.Text = string.Empty;
 
-            for (int i = 0; i < expression.Length; i++)
-            {
-                char ch = expression[i];
+            // TODO: make a history window
+            EqualsButton.Click += (obj, args) => outputText.Text = MathUtils.Evaluate(outputText.Text).ToString();
 
-                // If the current character is a whitespace,
-                // skip it
-                if (ch == ' ')
-                {
-                    continue;
-                }
-
-                // If the current character is a digit, push it
-                // to the operand stack
-                if (Char.IsDigit(ch))
-                {
-                    int num = 0;
-                    while (i < expression.Length
-                           && Char.IsDigit(expression[i]))
-                    {
-                        num = num * 10
-                          + (int)Char.GetNumericValue(
-                          expression[i]);
-                        i++;
-                    }
-                    i--;
-                    operands.Push(num);
-                }
-
-                // If the current character is an operator, push
-                // it to the operator stack
-                else if (ch == '+' || ch == '-' || ch == '*'
-                         || ch == '/')
-                {
-                    while (operators.Count > 0
-                           && hasPrecedence(ch,
-                                            operators.Peek()))
-                    {
-                        operands.Push(applyOperation(
-                          operators.Pop(), operands.Pop(),
-                          operands.Pop()));
-                    }
-                    operators.Push(ch);
-                }
-            }
-
-            while (operators.Count > 0)
-            {
-                operands.Push(applyOperation(operators.Pop(),
-                                             operands.Pop(),
-                                             operands.Pop()));
-            }
-
-            return operands.Pop();
-        }
-
-        public static bool hasPrecedence(char op1, char op2)
-        {
-            if ((op1 == '*' || op1 == '/')
-                && (op2 == '+' || op2 == '-'))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        public static int applyOperation(char op, int b, int a)
-        {
-            switch (op)
-            {
-                case '+':
-                    return a + b;
-                case '-':
-                    return a - b;
-                case '*':
-                    return a * b;
-                case '/':
-                    if (b == 0)
-                    {
-                        throw new InvalidOperationException(
-                          "Cannot divide by zero");
-                    }
-                    return a / b;
-            }
-            return 0;
+            Number0.Click += (obj, args) => outputText.Text += "0";
+            Number1.Click += (obj, args) => outputText.Text += "1";
+            Number2.Click += (obj, args) => outputText.Text += "2";
+            Number3.Click += (obj, args) => outputText.Text += "3";
+            Number4.Click += (obj, args) => outputText.Text += "4";
+            Number5.Click += (obj, args) => outputText.Text += "5";
+            Number6.Click += (obj, args) => outputText.Text += "6";
+            Number7.Click += (obj, args) => outputText.Text += "7";
+            Number8.Click += (obj, args) => outputText.Text += "8";
+            Number9.Click += (obj, args) => outputText.Text += "9";
         }
     }
 }
