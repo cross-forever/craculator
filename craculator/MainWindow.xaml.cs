@@ -34,6 +34,8 @@ namespace craculator
 
             BackspaceButton.Click += (obj, args) =>
             {
+                if (outputText.Text.Length == 0) return;
+
                outputText.Text = outputText.Text.Remove(outputText.Text.Length - 1);
             };
 

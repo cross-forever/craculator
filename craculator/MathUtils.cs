@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Navigation;
 
 namespace craculator
 {
     public static class MathUtils
     {
         // https://www.geeksforgeeks.org/parsing-string-of-symbols-to-expression/
-        public static int Evaluate(string expression)
+        public static float Evaluate(string expression)
         {
             // Create a stack to hold operands
-            Stack<int> operands = new Stack<int>();
+            Stack<float> operands = new Stack<float>();
 
             // Create a stack to hold operators
             Stack<char> operators = new Stack<char>();
@@ -32,12 +34,12 @@ namespace craculator
                 // to the operand stack
                 if (Char.IsDigit(ch))
                 {
-                    int num = 0;
+                    float num = 0;
                     while (i < expression.Length
                            && Char.IsDigit(expression[i]))
                     {
                         num = num * 10
-                          + (int)Char.GetNumericValue(
+                          + (float)Char.GetNumericValue(
                           expression[i]);
                         i++;
                     }
@@ -57,6 +59,17 @@ namespace craculator
                         operands.Push(applyOperation(
                           operators.Pop(), operands.Pop(),
                           operands.Pop()));
+                    }
+                    operators.Push(ch);
+                }
+
+                else if (ch == '.')
+                {
+                    while (operators.Count > 0)
+                    {
+                        operands.Push(applyOperation(
+                        operators.Pop(), operands.Pop(),
+                        operands.Pop()));
                     }
                     operators.Push(ch);
                 }
@@ -85,7 +98,7 @@ namespace craculator
             }
         }
 
-        public static int applyOperation(char op, int b, int a)
+        public static float applyOperation(char op, float b, float a)
         {
             switch (op)
             {
@@ -102,6 +115,8 @@ namespace craculator
                           "Cannot divide by zero");
                     }
                     return a / b;
+                case '.':
+                    return a + (b / 10);
             }
             return 0;
         }
