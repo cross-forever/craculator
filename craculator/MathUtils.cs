@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Navigation;
-
-namespace craculator
+﻿namespace craculator
 {
     public static class MathUtils
     {
         // https://www.geeksforgeeks.org/parsing-string-of-symbols-to-expression/
+        /// <summary>
+        /// Parses a math string and spits out a result
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
         public static float Evaluate(string expression)
         {
             // Create a stack to hold operands
@@ -56,9 +53,11 @@ namespace craculator
                            && hasPrecedence(ch,
                                             operators.Peek()))
                     {
-                        operands.Push(applyOperation(
-                          operators.Pop(), operands.Pop(),
-                          operands.Pop()));
+                        if (!operators.TryPop(out char op)) break;
+                        if (!operands.TryPop(out float b)) break;
+                        if (!operands.TryPop(out float a)) break;
+
+                        operands.Push(ApplyOperation(op, b, a));
                     }
                     operators.Push(ch);
                 }
@@ -67,25 +66,31 @@ namespace craculator
                 {
                     while (operators.Count > 0)
                     {
-                        operands.Push(applyOperation(
-                        operators.Pop(), operands.Pop(),
-                        operands.Pop()));
+                        if (!operators.TryPop(out char op)) break;
+                        if (!operands.TryPop(out float b)) break;
+                        if (!operands.TryPop(out float a)) break;
+
+
+                        operands.Push(ApplyOperation(op, b, a));
                     }
+
                     operators.Push(ch);
                 }
             }
 
-            while (operators.Count > 0)
+            while (operators.Count > 0 && operands.Count > 0)
             {
-                operands.Push(applyOperation(operators.Pop(),
-                                             operands.Pop(),
-                                             operands.Pop()));
+                if (!operators.TryPop(out char op)) break;
+                if (!operands.TryPop(out float b)) break;
+                if (!operands.TryPop(out float a)) break;
+
+                operands.Push(ApplyOperation(op, b, a));
             }
 
-            return operands.Pop();
+            return operands.Count > 0 ? operands.Pop() : 0;
         }
 
-        public static bool hasPrecedence(char op1, char op2)
+        private static bool hasPrecedence(char op1, char op2)
         {
             if ((op1 == '*' || op1 == '/')
                 && (op2 == '+' || op2 == '-'))
@@ -98,7 +103,7 @@ namespace craculator
             }
         }
 
-        public static float applyOperation(char op, float b, float a)
+        private static float ApplyOperation(char op, float b, float a)
         {
             switch (op)
             {
@@ -111,13 +116,13 @@ namespace craculator
                 case '/':
                     if (b == 0)
                     {
-                        throw new InvalidOperationException(
-                          "Cannot divide by zero");
+                        return 0;
                     }
                     return a / b;
                 case '.':
                     return a + (b / 10);
             }
+
             return 0;
         }
     }
