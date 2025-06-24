@@ -6,7 +6,6 @@ Since I'm just coming back to programming after a long break, I wanted to start 
 
 # todo..
 - [ ] History window
-- [ ] dark mode
 - [ ] polish
 
 #### fixing errors
