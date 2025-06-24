@@ -33,26 +33,27 @@
             <!-- BUTTONS -->
 
             <!-- Operators -->
-            <Button Name="DivideButton" Grid.Row="0" Grid.Column="0">Divide</Button>
-            <Button Name="MultiplyButton" Grid.Row="0" Grid.Column="1">Multiply</Button>
-            <Button Name="SubtractButton" Grid.Row="0" Grid.Column="2">Subtract</Button>
-            <Button Name="ClearButton" Grid.Row="4" Grid.Column="0">Clear</Button>
-            <Button Name="PointButton" Grid.Row="4" Grid.Column="3">.</Button>
-            <Button Name="BackspaceButton" Grid.Row="0" Grid.Column="3">Backspace</Button>
-            <Button Name="AddButton" Grid.Row="1" Grid.Column="3">Add</Button>
-            <Button Name="EqualsButton" Grid.RowSpan="2" Grid.Row="2" Grid.Column="3">Equals</Button>
-            
+            <Button Name="DivideButton" Grid.Row="0" Grid.Column="0" FontSize="20" Click="OnClickCalculatorButton">/</Button>
+            <Button Name="MultiplyButton" Grid.Row="0" Grid.Column="1" FontSize="20" Click="OnClickCalculatorButton">*</Button>
+            <Button Name="SubtractButton" Grid.Row="0" Grid.Column="2" FontSize="20" Click="OnClickCalculatorButton">-</Button>
+            <Button Name="ClearButton" Grid.Row="4" Grid.Column="0" FontSize="20" Click="OnClickCalculatorButton">CE</Button>
+            <Button Name="PointButton" Grid.Row="4" Grid.Column="3" FontSize="20" Click="OnClickCalculatorButton">.</Button>
+            <Button Name="BackspaceButton" Grid.Row="0" Grid.Column="3" FontSize="20" Click="OnClickCalculatorButton">DEL</Button>
+
+            <Button Name="AddButton" Grid.Row="1" Grid.Column="3" FontSize="20" Click="OnClickCalculatorButton">+</Button>
+            <Button Name="EqualsButton" Grid.RowSpan="2" Grid.Row="2" Grid.Column="3" FontSize="20" Click="OnClickCalculatorButton">=</Button>
+
             <!-- Numbers -->
-            <Button Name="Number0" Grid.ColumnSpan="2" Grid.Row="4" Grid.Column="1">0</Button>
-            <Button Name="Number1" Grid.Row="3" Grid.Column="0">1</Button>
-            <Button Name="Number2" Grid.Row="3" Grid.Column="1">2</Button>
-            <Button Name="Number3" Grid.Row="3" Grid.Column="2">3</Button>
-            <Button Name="Number4" Grid.Row="2" Grid.Column="0">4</Button>
-            <Button Name="Number5" Grid.Row="2" Grid.Column="1">5</Button>
-            <Button Name="Number6" Grid.Row="2" Grid.Column="2">6</Button>
-            <Button Name="Number7" Grid.Row="1" Grid.Column="0">7</Button>
-            <Button Name="Number8" Grid.Row="1" Grid.Column="1">8</Button>
-            <Button Name="Number9" Grid.Row="1" Grid.Column="2">9</Button>
+            <Button Name="Number0" Grid.ColumnSpan="2" Grid.Row="4" Grid.Column="1" FontSize="35" Click="OnClickCalculatorButton">0</Button>
+            <Button Name="Number1" Grid.Row="3" Grid.Column="0" FontSize="35" Click="OnClickCalculatorButton">1</Button>
+            <Button Name="Number2" Grid.Row="3" Grid.Column="1" FontSize="35" Click="OnClickCalculatorButton">2</Button>
+            <Button Name="Number3" Grid.Row="3" Grid.Column="2" FontSize="35" Click="OnClickCalculatorButton">3</Button>
+            <Button Name="Number4" Grid.Row="2" Grid.Column="0" FontSize="35" Click="OnClickCalculatorButton">4</Button>
+            <Button Name="Number5" Grid.Row="2" Grid.Column="1" FontSize="35" Click="OnClickCalculatorButton">5</Button>
+            <Button Name="Number6" Grid.Row="2" Grid.Column="2" FontSize="35" Click="OnClickCalculatorButton">6</Button>
+            <Button Name="Number7" Grid.Row="1" Grid.Column="0" FontSize="35" Click="OnClickCalculatorButton">7</Button>
+            <Button Name="Number8" Grid.Row="1" Grid.Column="1" FontSize="35" Click="OnClickCalculatorButton">8</Button>
+            <Button Name="Number9" Grid.Row="1" Grid.Column="2" FontSize="35" Click="OnClickCalculatorButton">9</Button>
         </Grid>
     </Grid>
 </Window>

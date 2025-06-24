@@ -8,63 +8,109 @@ namespace craculator
     /// </summary>
     public partial class MainWindow : Window
     {
+        public string lastAction = string.Empty;
+
         public MainWindow()
         {
             InitializeComponent();
+        }
 
-            // CALLBACKS
+        private void OnClickCalculatorButton(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine($"Clicked button (Last action {lastAction})");
 
-            // Operators
-            AddButton.Click += (obj, args) => outputText.Text += " + ";
-            SubtractButton.Click += (obj, args) => outputText.Text += " - ";
-            DivideButton.Click += (obj, args) => outputText.Text += " / ";
-            MultiplyButton.Click += (obj, args) => outputText.Text += " * ";
-            ClearButton.Click += (obj, args) => outputText.Text = string.Empty;
-
-            // currently mistaking decimal points for multiplication.
-            PointButton.Click += (obj, args) => outputText.Text += ".";
-
-            BackspaceButton.Click += (obj, args) =>
+            switch (((Button)sender).Content)
             {
-                if (outputText.Text.Length == 0) return;
-
-                int currentCharIndex = outputText.Text.Length - 1;
-
-                if (char.IsDigit(outputText.Text[currentCharIndex]))
-                {
-                    outputText.Text = outputText.Text.Remove(currentCharIndex);
-                }
-
-                else if (char.IsWhiteSpace(outputText.Text[currentCharIndex]))
-                {
-                    int index = currentCharIndex;
-
-                    while (index > 0 && !char.IsDigit(outputText.Text[index]))
+                case "0":
+                    if (lastAction == "=") { outputText.Text = "0"; break; }
+                    outputText.Text += "0";
+                    break;
+                case "1":
+                    if (lastAction == "=") { outputText.Text = "1"; break; }
+                    outputText.Text += "1";
+                    break;
+                case "2":
+                    if (lastAction == "=") { outputText.Text = "2"; break; }
+                    outputText.Text += "2";
+                    break;
+                case "3":
+                    if (lastAction == "=") { outputText.Text = "3"; break; }
+                    outputText.Text += "3";
+                    break;
+                case "4":
+                    if (lastAction == "=") { outputText.Text = "4"; break; }
+                    outputText.Text += "4";
+                    break;
+                case "5":
+                    if (lastAction == "=") { outputText.Text = "5"; break; }
+                    outputText.Text += "5";
+                    break;
+                case "6":
+                    if (lastAction == "=") { outputText.Text = "6"; break; }
+                    outputText.Text += "6";
+                    break;
+                case "7":
+                    if (lastAction == "=") { outputText.Text = "7"; break; }
+                    outputText.Text += "7";
+                    break;
+                case "8":
+                    if (lastAction == "=") { outputText.Text = "8"; break; }
+                    outputText.Text += "8";
+                    break;
+                case "9":
+                    if (lastAction == "=") { outputText.Text = "9"; break; }
+                    outputText.Text += "9";
+                    break;
+                case "DEL":
                     {
-                        index--;
+                        if (outputText.Text.Length == 0) return;
+
+                        int currentCharIndex = outputText.Text.Length - 1;
+
+                        if (char.IsDigit(outputText.Text[currentCharIndex]))
+                        {
+                            outputText.Text = outputText.Text.Remove(currentCharIndex);
+                        }
+
+                        else if (char.IsWhiteSpace(outputText.Text[currentCharIndex]))
+                        {
+                            int index = currentCharIndex;
+
+                            while (index > 0 && !char.IsDigit(outputText.Text[index]))
+                            {
+                                index--;
+                            }
+
+                            outputText.Text = outputText.Text.Remove(index);
+                        }
                     }
+                    break;
+                case "CE":
+                    outputText.Text = string.Empty;
+                    break;
+                case "/":
+                    outputText.Text += " / ";
+                    break;
+                case "*":
+                    outputText.Text += " * ";
+                    break;
+                case "-":
+                    outputText.Text += " - ";
+                    break;
+                case "+":
+                    outputText.Text += " + ";
+                    break;
+                case ".":
+                    outputText.Text += ".";
+                    break;
+                case "=":
+                    {
+                        outputText.Text = MathUtils.Evaluate(outputText.Text).ToString();
+                    }
+                    break;
+            }
 
-                    outputText.Text = outputText.Text.Remove(index);
-                }
-            };
-
-                // TODO: make a history window
-                EqualsButton.Click += (obj, args) =>
-                {
-                    outputText.Text = MathUtils.Evaluate(outputText.Text).ToString();
-                };
-
-                // Numbers
-                Number0.Click += (obj, args) => outputText.Text += "0";
-                Number1.Click += (obj, args) => outputText.Text += "1";
-                Number2.Click += (obj, args) => outputText.Text += "2";
-                Number3.Click += (obj, args) => outputText.Text += "3";
-                Number4.Click += (obj, args) => outputText.Text += "4";
-                Number5.Click += (obj, args) => outputText.Text += "5";
-                Number6.Click += (obj, args) => outputText.Text += "6";
-                Number7.Click += (obj, args) => outputText.Text += "7";
-                Number8.Click += (obj, args) => outputText.Text += "8";
-                Number9.Click += (obj, args) => outputText.Text += "9";
+            lastAction = (string)((Button)sender).Content;
         }
     }
 }
