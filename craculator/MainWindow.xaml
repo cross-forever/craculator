@@ -7,7 +7,14 @@
         mc:Ignorable="d"
         Title="CRACULATOR" MinWidth="300" MinHeight="450"
         MaxWidth="300" MaxHeight="450">
+    <Window.Resources>
+        <ContextMenu x:Key="contextMenu" MenuItem.Click="OnClickContextMenuItem">
+            <MenuItem Header="History"></MenuItem>
+            <MenuItem Header="Repository"></MenuItem>
+        </ContextMenu>
+    </Window.Resources>
     <Grid>
+
         <Grid Margin="0,0,0,334" ShowGridLines="true">
             <Viewbox HorizontalAlignment="Right">
                 <TextBlock x:Name="outputText" TextWrapping="WrapWithOverflow" FontSize="80"></TextBlock>

@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Security.Policy;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Interop;
 
 namespace craculator
 {
@@ -13,6 +16,52 @@ namespace craculator
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            IntPtr hwnd = new WindowInteropHelper(this).Handle;
+            HwndSource hwndSource = HwndSource.FromHwnd(hwnd);
+            hwndSource.AddHook(new HwndSourceHook(WndProc));
+        }
+
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg == 0xa4)
+            {
+                // show our context menu
+                ShowContextMenu();
+
+                handled = true;
+            }
+
+            return IntPtr.Zero;
+        }
+
+        private void ShowContextMenu()
+        {
+            var contextMenu = Resources["contextMenu"] as ContextMenu;
+
+            if (contextMenu == null) return;
+
+            contextMenu.IsOpen = true;
+        }
+
+        private void OnClickContextMenuItem(object sender, RoutedEventArgs e)
+        {
+            var item = e.OriginalSource as MenuItem;
+
+            switch (item?.Header)
+            {
+                case "History":
+                    Window historyWindow = new();
+                    historyWindow.Show();
+                    break;
+                case "Repository":
+                    Process.Start("explorer", "https://github.com/cross-forever/craculator");
+                    break;
+            }
         }
 
         private void OnClickCalculatorButton(object sender, RoutedEventArgs e)
