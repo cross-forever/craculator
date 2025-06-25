@@ -16,6 +16,7 @@ namespace craculator
         public MainWindow()
         {
             InitializeComponent();
+            Style = (Style)FindResource(typeof(Window));
             Loaded += MainWindow_Loaded;
         }
 
@@ -54,12 +55,11 @@ namespace craculator
 
             switch (item?.Header)
             {
-                case "History":
-                    Window historyWindow = new();
-                    historyWindow.Show();
-                    break;
                 case "Repository":
                     Process.Start("explorer", "https://github.com/cross-forever/craculator");
+                    break;
+                case "Quit":
+                    Application.Current.Shutdown(0);
                     break;
             }
         }

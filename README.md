@@ -5,8 +5,7 @@ This is just a basic calculator, It can add, subtract, multiply, divide and stor
 Since I'm just coming back to programming after a long break, I wanted to start with a simple project.
 
 # todo..
-- [ ] History window
-- [ ] polish
+- [x] polish
 
 #### fixing errors
 - [x] pressing equals gives an error since there's nothing to put onto the stack

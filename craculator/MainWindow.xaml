@@ -9,15 +9,19 @@
         MaxWidth="300" MaxHeight="450">
     <Window.Resources>
         <ContextMenu x:Key="contextMenu" MenuItem.Click="OnClickContextMenuItem">
-            <MenuItem Header="History"></MenuItem>
             <MenuItem Header="Repository"></MenuItem>
+            <MenuItem Header="Quit"></MenuItem>
         </ContextMenu>
+
+        <Style x:Key="IBMPlexMono-Regular">
+            <Setter Property="TextElement.FontFamily" Value="Fonts/#IBMPlexMono-Regular" />
+        </Style>
     </Window.Resources>
     <Grid>
 
         <Grid Margin="0,0,0,334" ShowGridLines="true">
             <Viewbox HorizontalAlignment="Right">
-                <TextBlock x:Name="outputText" TextWrapping="WrapWithOverflow" FontSize="80"></TextBlock>
+                <TextBlock x:Name="outputText" TextWrapping="WrapWithOverflow" FontSize="80" FontFamily="Cascadia Mono"></TextBlock>
             </Viewbox>
         </Grid>
 
@@ -40,27 +44,27 @@
             <!-- BUTTONS -->
 
             <!-- Operators -->
-            <Button Name="DivideButton" Grid.Row="0" Grid.Column="0" FontSize="20" Click="OnClickCalculatorButton">/</Button>
-            <Button Name="MultiplyButton" Grid.Row="0" Grid.Column="1" FontSize="20" Click="OnClickCalculatorButton">*</Button>
-            <Button Name="SubtractButton" Grid.Row="0" Grid.Column="2" FontSize="20" Click="OnClickCalculatorButton">-</Button>
-            <Button Name="ClearButton" Grid.Row="4" Grid.Column="0" FontSize="20" Click="OnClickCalculatorButton">CE</Button>
-            <Button Name="PointButton" Grid.Row="4" Grid.Column="3" FontSize="20" Click="OnClickCalculatorButton">.</Button>
-            <Button Name="BackspaceButton" Grid.Row="0" Grid.Column="3" FontSize="20" Click="OnClickCalculatorButton">DEL</Button>
+            <Button Name="DivideButton" Grid.Row="0" Grid.Column="0" FontSize="20" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">/</Button>
+            <Button Name="MultiplyButton" Grid.Row="0" Grid.Column="1" FontSize="20" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">*</Button>
+            <Button Name="SubtractButton" Grid.Row="0" Grid.Column="2" FontSize="20" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">-</Button>
+            <Button Name="ClearButton" Grid.Row="4" Grid.Column="0" FontSize="20" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">CE</Button>
+            <Button Name="PointButton" Grid.Row="4" Grid.Column="3" FontSize="20" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">.</Button>
+            <Button Name="BackspaceButton" Grid.Row="0" Grid.Column="3" FontSize="20" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">DEL</Button>
 
-            <Button Name="AddButton" Grid.Row="1" Grid.Column="3" FontSize="20" Click="OnClickCalculatorButton">+</Button>
-            <Button Name="EqualsButton" Grid.RowSpan="2" Grid.Row="2" Grid.Column="3" FontSize="20" Click="OnClickCalculatorButton">=</Button>
+            <Button Name="AddButton" Grid.Row="1" Grid.Column="3" FontSize="20" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">+</Button>
+            <Button Name="EqualsButton" Grid.RowSpan="2" Grid.Row="2" Grid.Column="3" FontSize="20" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">=</Button>
 
             <!-- Numbers -->
-            <Button Name="Number0" Grid.ColumnSpan="2" Grid.Row="4" Grid.Column="1" FontSize="35" Click="OnClickCalculatorButton">0</Button>
-            <Button Name="Number1" Grid.Row="3" Grid.Column="0" FontSize="35" Click="OnClickCalculatorButton">1</Button>
-            <Button Name="Number2" Grid.Row="3" Grid.Column="1" FontSize="35" Click="OnClickCalculatorButton">2</Button>
-            <Button Name="Number3" Grid.Row="3" Grid.Column="2" FontSize="35" Click="OnClickCalculatorButton">3</Button>
-            <Button Name="Number4" Grid.Row="2" Grid.Column="0" FontSize="35" Click="OnClickCalculatorButton">4</Button>
-            <Button Name="Number5" Grid.Row="2" Grid.Column="1" FontSize="35" Click="OnClickCalculatorButton">5</Button>
-            <Button Name="Number6" Grid.Row="2" Grid.Column="2" FontSize="35" Click="OnClickCalculatorButton">6</Button>
-            <Button Name="Number7" Grid.Row="1" Grid.Column="0" FontSize="35" Click="OnClickCalculatorButton">7</Button>
-            <Button Name="Number8" Grid.Row="1" Grid.Column="1" FontSize="35" Click="OnClickCalculatorButton">8</Button>
-            <Button Name="Number9" Grid.Row="1" Grid.Column="2" FontSize="35" Click="OnClickCalculatorButton">9</Button>
+            <Button Name="Number0" Grid.ColumnSpan="2" Grid.Row="4" Grid.Column="1" FontSize="35" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">0</Button>
+            <Button Name="Number1" Grid.Row="3" Grid.Column="0" FontSize="35" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">1</Button>
+            <Button Name="Number2" Grid.Row="3" Grid.Column="1" FontSize="35" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">2</Button>
+            <Button Name="Number3" Grid.Row="3" Grid.Column="2" FontSize="35" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">3</Button>
+            <Button Name="Number4" Grid.Row="2" Grid.Column="0" FontSize="35" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">4</Button>
+            <Button Name="Number5" Grid.Row="2" Grid.Column="1" FontSize="35" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">5</Button>
+            <Button Name="Number6" Grid.Row="2" Grid.Column="2" FontSize="35" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">6</Button>
+            <Button Name="Number7" Grid.Row="1" Grid.Column="0" FontSize="35" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">7</Button>
+            <Button Name="Number8" Grid.Row="1" Grid.Column="1" FontSize="35" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">8</Button>
+            <Button Name="Number9" Grid.Row="1" Grid.Column="2" FontSize="35" Click="OnClickCalculatorButton" FontFamily="Cascadia Mono">9</Button>
         </Grid>
     </Grid>
 </Window>
