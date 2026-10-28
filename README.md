@@ -13,7 +13,7 @@ Since I'm just coming back to programming after a long break, I wanted to start 
 
     git clone https://github.com/cross-forever/craculator.git
     cd ./craculator
-    ./craculator.sln
+    craculator.sln
 
 #### Through .NET
 
